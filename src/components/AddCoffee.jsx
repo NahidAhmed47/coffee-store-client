@@ -13,7 +13,7 @@ const AddCoffee = () => {
         const category = form.category.value;
         const details = form.details.value;
         const photoUrl = form.photoUrl.value;
-        const newCoffee = {name, chef, supplier, texte: teste, category, details, photoUrl};
+        const newCoffee = {name, chef, supplier, teste, category, details, photoUrl};
         console.log(newCoffee)
         fetch('http://localhost:5000/coffee',{
             method: 'POST',
