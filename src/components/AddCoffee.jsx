@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const AddCoffee = () => {
     const handleFormData = (e)=>{
@@ -12,8 +13,27 @@ const AddCoffee = () => {
         const category = form.category.value;
         const details = form.details.value;
         const photoUrl = form.photoUrl.value;
-        const coffee = {name, chef, supplier, texte: teste, category, details, photoUrl};
-        console.log(coffee)
+        const newCoffee = {name, chef, supplier, texte: teste, category, details, photoUrl};
+        console.log(newCoffee)
+        fetch('http://localhost:5000/coffee',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newCoffee)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                Swal.fire({
+                    icon:'success',
+                    title: 'New coffee successfully created',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                form.reset();
+            }
+        })
     }
   return (
     <div className="max-w-[1200px] mx-auto mt-36">
