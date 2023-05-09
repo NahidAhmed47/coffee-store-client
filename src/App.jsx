@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
-      This is app
+    <div className='max-w-[1200px] mx-auto'>
+      <Link to="/add_coffee"><button className='my-btn'>Add Coffee</button></Link>
     </div>
   );
 };
